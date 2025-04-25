@@ -1,12 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { jest } from "@jest/globals";
 import "@testing-library/jest-dom";
 import "fast-text-encoding";
 import "dotenv/config";
 import "whatwg-fetch";
+import "@testing-library/jest-dom";
 
 import { TextEncoder, TextDecoder } from "util";
 
-globalThis.TextEncoder = TextEncoder;
-globalThis.TextDecoder = TextDecoder;
+(globalThis as any).TextEncoder = TextEncoder;
+(globalThis as any).TextDecoder = TextDecoder;
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,
@@ -24,11 +27,11 @@ Object.defineProperty(window, "matchMedia", {
 
 const localStorageMock: Storage = {
   length: 0,
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  removeItem: jest.fn(),
-  clear: jest.fn(),
-  key: jest.fn(),
+  getItem: jest.fn<(key: string) => string | null>(),
+  setItem: jest.fn<(key: string, value: string) => void>(),
+  removeItem: jest.fn<(key: string) => void>(),
+  clear: jest.fn<() => void>(),
+  key: jest.fn<(index: number) => string | null>(),
 };
 
 Object.defineProperty(global, "localStorage", {

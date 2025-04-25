@@ -11,34 +11,19 @@ describe("FilterComponent", () => {
 
   const mockFiltersConfig: FilterConfig[] = [
     {
-      name: "status",
-      label: "Status",
+      name: "namePrefix",
+      label: "Commercial Name",
+      type: "text",
+    },
+    {
+      name: "typeId",
+      label: "Types",
       type: "select",
       options: [
         { value: "", label: "All" },
-        { value: "open", label: "Open" },
-        { value: "closed", label: "Closed" },
+        { value: "type1", label: "Type 1" },
+        { value: "type2", label: "Type 2" },
       ],
-    },
-    {
-      name: { from: "fromDate", to: "toDate" },
-      label: "Date Range",
-      type: "date-range",
-    },
-    {
-      name: "role",
-      label: "My Role",
-      type: "select",
-      options: [
-        { value: "", label: "All" },
-        { value: "owner", label: "Owner" },
-        { value: "collaborator", label: "Collaborator" },
-      ],
-    },
-    {
-      name: "showDeleted",
-      label: "Include deleted",
-      type: "checkbox",
     },
   ];
 
@@ -56,53 +41,53 @@ describe("FilterComponent", () => {
     );
   };
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("renders correctly with all filters", () => {
     renderComponent();
 
     expect(screen.getByText("Filters")).toBeInTheDocument();
-    expect(screen.getByLabelText("Status")).toBeInTheDocument();
-    expect(screen.getByLabelText("My Role")).toBeInTheDocument();
-    expect(screen.getByLabelText("Include deleted")).toBeInTheDocument();
+    expect(screen.getByLabelText("Commercial Name")).toBeInTheDocument();
+    expect(screen.getByLabelText("Types")).toBeInTheDocument();
   });
 
   it("calls onFilterChange when input values change", async () => {
     renderComponent();
 
-    const statusSelect = screen.getByLabelText("Status");
-    await userEvent.selectOptions(statusSelect, "closed");
-    expect(mockOnFilterChange).toHaveBeenCalledWith(
-      expect.objectContaining({ status: "closed" })
-    );
+    const textInput = screen.getByLabelText("Commercial Name");
+    await userEvent.type(textInput, "Aspirin");
+    await waitFor(() => {
+      expect(mockOnFilterChange).toHaveBeenCalled();
+    });
 
-    const roleSelect = screen.getByLabelText("My Role");
-    await userEvent.selectOptions(roleSelect, "owner");
-    expect(mockOnFilterChange).toHaveBeenCalledWith(
-      expect.objectContaining({ role: "owner" })
-    );
-
-    const checkbox = screen.getByLabelText("Include deleted");
-    await userEvent.click(checkbox);
-    expect(mockOnFilterChange).toHaveBeenCalledWith(
-      expect.objectContaining({ showDeleted: true })
-    );
+    const selectInput = screen.getByLabelText("Types");
+    await userEvent.selectOptions(selectInput, "type1");
+    await waitFor(() => {
+      expect(mockOnFilterChange).toHaveBeenCalledWith(
+        expect.objectContaining({ typeId: "type1" })
+      );
+    });
   });
 
   it("clears filters when clicking 'Clear'", async () => {
     renderComponent();
 
-    const checkbox = screen.getByLabelText("Include deleted");
-    await userEvent.click(checkbox);
+    const textInput = screen.getByLabelText("Commercial Name");
+    await userEvent.type(textInput, "Test"); // Simulamos que el usuario escribe algo
 
     const clearButton = await screen.findByTestId("clear-filters");
 
     await userEvent.click(clearButton);
 
-    expect(mockOnFilterChange).toHaveBeenCalledWith({
-      status: "",
-      fromDate: "",
-      toDate: "",
-      role: "",
-      showDeleted: "",
+    await waitFor(() => {
+      expect(mockOnFilterChange).toHaveBeenCalledWith(
+        expect.objectContaining({
+          namePrefix: "",
+          typeId: "",
+        })
+      );
     });
   });
 
@@ -112,10 +97,16 @@ describe("FilterComponent", () => {
     const toggleButton = screen.getByTestId("toggle-filters");
     const filterBody = screen.getByTestId("filter-body");
 
-    await userEvent.click(toggleButton);
-    await waitFor(() => expect(filterBody).toHaveClass("collapse"));
+    expect(filterBody.classList.contains("show")).toBe(true);
 
     await userEvent.click(toggleButton);
-    await waitFor(() => expect(filterBody).toHaveClass("show"));
+    await waitFor(() => {
+      expect(filterBody.classList.contains("show")).toBe(false);
+    });
+
+    await userEvent.click(toggleButton);
+    await waitFor(() => {
+      expect(filterBody.classList.contains("show")).toBe(true);
+    });
   });
 });

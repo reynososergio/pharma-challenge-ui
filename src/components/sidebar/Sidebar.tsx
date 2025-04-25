@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Nav, Button, Offcanvas } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { List, BoxArrowRight } from "react-bootstrap-icons";
+import { List } from "react-bootstrap-icons";
 
 import "@/styles/sidebar.css";
 import { ROUTES } from "@/config/routes";
@@ -33,29 +33,19 @@ const Sidebar = () => {
         </Offcanvas.Header>
 
         <Offcanvas.Body className="sidebar-body d-flex flex-column">
-          <Nav className="flex-column flex-grow-1">
+          <Nav className="">
             <Nav.Link as={Link} to={ROUTES.HOME} className="sidebar-link">
               Home
             </Nav.Link>
           </Nav>
 
-          <Nav className="flex-column flex-grow-1">
+          <Nav className="">
             <Nav.Link
               as={Link}
               to={ROUTES.MEDICATION_TYPE.LIST}
               className="sidebar-link"
             >
               Medication Types
-            </Nav.Link>
-          </Nav>
-
-          <Nav className="mt-auto">
-            <Nav.Link
-              as={Link}
-              to="/logout"
-              className="sidebar-link logout-link"
-            >
-              <BoxArrowRight className="me-2" /> Log Out
             </Nav.Link>
           </Nav>
         </Offcanvas.Body>

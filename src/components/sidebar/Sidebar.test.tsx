@@ -61,6 +61,8 @@ describe("Sidebar", () => {
     fireEvent.click(toggleButton);
 
     expect(screen.getByRole("link", { name: /home/i })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /log out/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: /medication types/i })
+    ).toBeInTheDocument();
   });
 });
