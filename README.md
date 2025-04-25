@@ -1,54 +1,111 @@
-# React + TypeScript + Vite
+# Pharma Challenge UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend application for the Pharma Challenge project. It is built using **React** with **TypeScript** and **Vite**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📁 Project Structure
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+pharma-challenge-ui/
+├── src/
+│   ├── api/              # Axios API services
+│   ├── assets/           # Static assets (e.g. images)
+│   ├── atoms/            # Jotai atoms for global state
+│   ├── components/       # Reusable UI components
+│   ├── config/           # App-level configuration
+│   ├── constants/        # Constant values
+│   ├── hooks/            # Custom React hooks
+│   ├── layouts/          # Layout components
+│   ├── pages/            # Top-level views/routes
+│   ├── routes/           # Route definitions
+│   ├── schemas/          # Zod validation schemas
+│   ├── services/         # Services for business logic
+│   ├── styles/           # Global styles (e.g. CSS)
+│   ├── types/            # TypeScript type definitions
+│   └── utils/            # Utility/helper functions
+├── .env                      # Environment variables
+├── .env-example              # Example environment configuration
+├── .env-test                 # Test environment file
+├── index.html                # HTML entry point
+├── main.tsx                  # Application entry file
+├── vite-env.d.ts             # Vite-specific typings
+├── jest.setup.ts             # Jest setup
+├── setupTests.ts             # Testing utilities
+├── tsconfig.json             # TypeScript base configuration
+├── tsconfig.app.json         # TypeScript config for app
+├── tsconfig.jest.json        # TypeScript config for tests
+├── tsconfig.node.json        # TypeScript config for Node tools
+├── eslint.config.js          # ESLint configuration
+├── package.json              # NPM scripts and dependencies
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧪 Tech Stack
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+- **React 19**
+- **Vite**
+- **TypeScript**
+- **Jotai** (state management)
+- **Axios** (HTTP client)
+- **Jest + Testing Library** (testing)
+- **ESLint** (linting)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Install dependencies
+
+```bash
+npm install
 ```
+
+### 2. Setup environment variables
+
+Copy the `.env-example` to `.env` and adjust the values:
+
+```bash
+cp .env-example .env
+```
+
+Environment variables might include:
+```env
+VITE_API_BASE_URL=http://localhost:8080/api
+```
+
+---
+
+### 3. Run the application
+
+```bash
+npm run dev
+```
+
+The app will be available at [http://localhost:5173](http://localhost:5173)
+
+---
+
+### 4. Run tests
+
+```bash
+npm test
+```
+
+---
+
+## 🤔 Notes
+
+- All API calls are centralized in `src/api`
+- Global state is handled with **Jotai** atoms in `src/atoms`
+- Form validation is done via **Zod** in `src/schemas`
+- Folder structure follows a modular, scalable convention
+
+---
+
+## 📌 License
+
+This project is part of a technical challenge. Company details have been anonymized.  
+You may reuse or adapt the structure freely for other professional or learning purposes.
