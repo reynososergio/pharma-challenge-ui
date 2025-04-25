@@ -100,7 +100,7 @@ npm test
 
 - All API calls are centralized in `src/api`
 - Global state is handled with **Jotai** atoms in `src/atoms`
-- Form validation is done via **Zod** in `src/schemas`
+- Form validation is done via **Yup** in `src/schemas`
 - Folder structure follows a modular, scalable convention
 
 ---
