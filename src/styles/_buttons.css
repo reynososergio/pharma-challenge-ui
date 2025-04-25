@@ -1,0 +1,28 @@
+.btn-challenge {
+    background-color: var(--challenge-primary);
+    border: none;
+    color: var(--challenge-white);;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    transition: background 0.3s ease;
+}
+
+.btn-challenge-sidebar {
+    background-color: var(--challenge-light);
+    color: var(--challenge-dark);
+}
+  
+.btn-challenge:hover {
+    background-color: var(--challenge-primary-button);
+}
+
+.btn-challenge:active {
+    background-color: var(--challenge-primary-button) !important;
+    transform: scale(0.98);
+}
+
+
+
+
+  

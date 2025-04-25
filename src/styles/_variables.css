@@ -1,0 +1,12 @@
+:root {
+  --challenge-primary: #1684c1;
+  --challenge-primary-input: #3093ca;
+  --challenge-primary-button: #0f6ba0;
+
+  --challenge-dark: #0D0D0D;
+  --challenge-light: #F5F5F5;
+  --challenge-white: #ffffff;
+  --challenge-light-gray: #ebe8e8;
+
+  --font-primary: 'Poppins', sans-serif;
+}

@@ -1,0 +1,16 @@
+@import "./_variables.css";
+@import "./_buttons.css";
+@import "./_layout.css";
+@import "./_forms.css";
+@import "./_badge.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-primary);
+}
+
+.pointer {
+  cursor: pointer;
+}

@@ -1,0 +1,73 @@
+@media (max-width: 768px) {
+    .offcanvas.show {
+      width: 100% !important;
+    }
+}
+
+.sidebar-container {
+    background-color: var(--challenge-dark);
+    color: var(--challenge-light);
+}
+
+.sidebar-header {
+    background-color: var(--challenge-primary);
+    color: white;
+}
+
+.sidebar-body {
+    background-color: var(--challenge-dark);
+}
+
+.sidebar-link {
+    color: var(--challenge-light);
+    font-size: 1rem;
+    padding: 0.75rem;
+}
+
+.sidebar-link:hover {
+    background-color: var(--challenge-primary);
+    color: white;
+    border-radius: 0.5rem;
+}
+
+
+.sidebar-toggle {
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 50%;
+}
+  
+.sidebar-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.sidebar-link {
+    color: white !important;
+    font-size: 1rem;
+    padding: 0.75rem;
+}
+
+.sidebar-link:hover {
+    background-color: var(--challenge-primary);
+    color: white;
+    border-radius: 0.5rem;
+}
+
+.logout-link {
+    font-weight: bold;
+    padding: 0.75rem; 
+    width: 100%;
+    display: block; 
+    text-align: left;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logout-link:hover {
+    background-color: var(--challenge-primary);
+    color: white;
+    border-radius: 0.5rem;
+}

@@ -1,0 +1,9 @@
+.badge {
+    padding: 0.5rem 1rem;
+}
+
+.badge-fixed {
+    min-width: 80%;
+    display: inline-block;
+    text-align: center;
+}

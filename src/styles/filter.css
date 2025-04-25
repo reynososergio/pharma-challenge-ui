@@ -1,0 +1,56 @@
+.filter-container {
+    background-color: var(--challenge-light-gray);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.filter-header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.filter-body {
+    padding-top: 10px;
+}
+
+.filter-label {
+    font-weight: bold;
+    font-size: 14px;
+}
+  
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
+.date-range-container {
+    width: 100%;
+    display: flex; 
+}
+  
+.full-width-datepicker {
+    width: 100% !important; 
+    flex-grow: 1;
+}
+
+.form-label-without-bottom {
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 576px) {
+  .filter-container .row .col {
+    width: 100%;
+  }
+
+  .filter-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .filter-container .form-check {
+    display: flex;
+    align-items: center;
+  }
+}
+  
