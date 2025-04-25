@@ -13,6 +13,7 @@ import { handleApiError } from "@/utils/handleApiError";
 import { MedicationProps, MedicationRequest } from "@/types/medication";
 import { createMedication } from "@/services/medication/medicationService";
 import { medicationSchema } from "@/schemas/medication.schema";
+import { sanitizeMedication } from "@/utils/sanitizeMedication";
 
 const MedicationCreate = ({
   isPending,
@@ -40,7 +41,8 @@ const MedicationCreate = ({
 
   const onSubmit = async (data: MedicationRequest) => {
     try {
-      await createMedication(data);
+      const sanitizedData = sanitizeMedication(data);
+      await createMedication(sanitizedData);
 
       showToast({
         type: "success",

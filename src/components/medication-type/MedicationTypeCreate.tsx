@@ -14,6 +14,7 @@ import { MedicationTypeRequest } from "@/types/medication-type";
 import { createMedicationType } from "@/services/medication-type/medicationTypeService";
 import { MedicationTypeProps } from "../../types/medication-type";
 import { medicationTypeSchema } from "@/schemas/medication-type.schema";
+import { sanitizeMedicationType } from "@/utils/sanitizeMedicationType";
 
 const MedicationTypeCreate = ({ isPending }: MedicationTypeProps) => {
   const navigate = useNavigate();
@@ -34,8 +35,9 @@ const MedicationTypeCreate = ({ isPending }: MedicationTypeProps) => {
 
   const onSubmit = async (data: MedicationTypeRequest) => {
     try {
-      await createMedicationType(data);
+      const sanitizedData = sanitizeMedicationType(data);
 
+      await createMedicationType(sanitizedData);
       showToast({
         type: "success",
         message: `Medication created successfully`,
